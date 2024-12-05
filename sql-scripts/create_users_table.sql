@@ -1,9 +1,15 @@
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    id SERIAL PRIMARY KEY,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
-    email VARCHAR NOT NULL,
-    phone VARCHAR
+    password VARCHAR NOT NULL,
+    active BOOLEAN DEFAULT true,
+    email VARCHAR UNIQUE NOT NULL,
+    phone VARCHAR,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 INSERT INTO users (first_name, last_name, email)
