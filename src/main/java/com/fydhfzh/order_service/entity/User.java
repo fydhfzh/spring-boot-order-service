@@ -2,7 +2,7 @@ package com.fydhfzh.order_service.entity;
 
 import java.util.List;
 
-import com.fydhfzh.order_service.dto.UserResponse;
+import com.fydhfzh.order_service.dto.user.UserResponse;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

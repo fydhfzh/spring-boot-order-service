@@ -1,6 +1,6 @@
 package com.fydhfzh.order_service.entity;
 
-import com.fydhfzh.order_service.dto.OrderResponse;
+import com.fydhfzh.order_service.dto.order.OrderResponse;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
