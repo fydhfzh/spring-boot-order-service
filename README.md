@@ -2,9 +2,9 @@
 
 ## Intro
 
-This is a project that created as a learning project. This project involves the usage of Spring Boot as framework, ELK (Elastic search, Logstash, and Kibana)
-Stack for separate query system (not used yet), and additional Swagger for API Documentation. Other than that, PostgreSQL also used as the main local database
-with simple `users` -> `orders` -> `product` schema. For the authentication, JWT is the option chosen as stateless authentication.
+This is a project that was created as a learning project. This project involves the usage of Spring Boot as a framework, ELK (Elastic search, Logstash, and
+Kibana) Stack for a separate query system (not used yet), and additional Swagger for API Documentation. Other than that, PostgreSQL is also used as the main
+local database with simple `users` -> `orders` -> `product` schema. For authentication, JWT is the option chosen for stateless authentication.
 
 ## Schemas
 
