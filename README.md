@@ -1,5 +1,8 @@
 # Spring Boot RESTful API + ELK Stack
 
+![spring-boot-image](https://en.m.wikipedia.org/wiki/File:Spring_Boot.svg)
+![elk-stack-image](https://flowygo.com/en/blog/elk-stack-what-it-is-and-what-it-is-used-for/)
+
 ## Intro
 
 This is a project that was created as a learning project. This project involves the usage of Spring Boot as a framework, ELK (Elasticsearch, Logstash, and
