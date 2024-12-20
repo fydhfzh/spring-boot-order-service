@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,55 +29,72 @@ public class ProductController {
     }
 
     @GetMapping
-    @CrossOrigin
     public ResponseEntity<ApiResponse> all() {
         List<ProductResponse> productsResponse = productService.findAll();
 
-        ApiResponse response = new ApiResponse(
-                "success",
-                "Products retrieved successfully",
-                200,
-                productsResponse);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .statusCode(HttpStatus.OK.value())
+                .message("Products retrieved successfully")
+                .data(productsResponse)
+                .build();
 
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.ACCEPTED);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping
     public ResponseEntity<ApiResponse> save(@RequestBody ProductRequest productPayload) {
         ProductResponse productResponse = productService.save(productPayload);
 
-        ApiResponse response = new ApiResponse("success",
-                "Product created successfully", 201, productResponse);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .statusCode(HttpStatus.CREATED.value())
+                .message("Product created successfully")
+                .data(productResponse)
+                .build();
 
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse> update(@RequestBody ProductRequest payload, @PathVariable int id) {
-        ProductResponse productResponse = productService.update(payload, id);
+    @PutMapping
+    public ResponseEntity<ApiResponse> update(@RequestBody ProductRequest payload) {
+        ProductResponse productResponse = productService.update(payload);
 
-        ApiResponse response = new ApiResponse("success", "Product updated successfully", 200, productResponse);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .statusCode(HttpStatus.OK.value())
+                .message("Product updated successfully")
+                .data(productResponse)
+                .build();
 
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse> one(@PathVariable int id) {
         ProductResponse productResponse = productService.findById(id);
 
-        ApiResponse response = new ApiResponse("success",
-                "Product retrieved successfully", 200, productResponse);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .statusCode(HttpStatus.OK.value())
+                .message("Product retrieved successfully")
+                .data(productResponse)
+                .build();
 
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> delete(@PathVariable int id) {
         productService.delete(id);
 
-        ApiResponse response = new ApiResponse("success", "Product deleted successfully", 200);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .statusCode(HttpStatus.OK.value())
+                .message("Product deleted successfully")
+                .build();
 
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}/add-quantity")
@@ -86,9 +102,13 @@ public class ProductController {
             @PathVariable int id) {
         ProductResponse productResponse = productService.updateQuantityById(payload, id);
 
-        ApiResponse response = new ApiResponse("success", "Product quantity successfully increased", 200,
-                productResponse);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .statusCode(HttpStatus.OK.value())
+                .message("Product updated successfully")
+                .data(productResponse)
+                .build();
 
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: fydhfzh
+    password: fydhfzh
+    driver-class-name: org.postgresql.Driver
+  main:
+    banner-mode: off
+
+server:
+  port: 80
+  servlet:
+    context-path: /api
+
+security:
+  jwt:
+    secret: 'D602B6A42AF799F33B5F9644B69E2AC33E0F94C65BF33B6636A4B47B8388A9CC'

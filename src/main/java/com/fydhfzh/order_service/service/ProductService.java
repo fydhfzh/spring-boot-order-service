@@ -9,7 +9,7 @@ import com.fydhfzh.order_service.dto.product.ProductResponse;
 public interface ProductService {
     ProductResponse save(ProductRequest payload);
 
-    ProductResponse update(ProductRequest payload, int id);
+    ProductResponse update(ProductRequest payload);
 
     ProductResponse findById(int id);
 

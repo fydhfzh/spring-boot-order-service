@@ -6,7 +6,19 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@Data
+@Builder
+@EqualsAndHashCode(callSuper = true)
+@ToString(exclude = "user")
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "roles")
 public class Role extends BaseEntity {
@@ -17,29 +29,5 @@ public class Role extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    // define constructor
-    public Role() {
-
-    }
-
-    public Role(String role) {
-        this.role = role;
-    }
-
-    // define getter/setter
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "Role [role=" + role + ", user=" + user + ", getId()=" + getId() + "]";
-    }
 
 }

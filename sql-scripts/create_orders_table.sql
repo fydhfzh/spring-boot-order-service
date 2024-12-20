@@ -8,6 +8,7 @@ CREATE TABLE orders (
     product_id INTEGER NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    deleted_at TIMESTAMPTZ DEFAULT NULL,
     constraint fk_user_orders
         foreign key (user_id) references users(id),
     constraint fk_product_orders

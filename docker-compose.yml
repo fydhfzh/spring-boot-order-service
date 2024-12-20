@@ -1,0 +1,38 @@
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    volumes:
+      - ./data/es/:/usr/share/elasticsearch/data
+    ports:
+      - ${ELASTICSEARCH_PORT}:9200
+    restart: always
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+    ports:
+      - ${KIBANA_PORT}:5601
+    environment:
+      - xpack.security.enabled=false
+      - SERVERNAME=kibana
+      - ELASTICSEARCH_URL=http://${ELASTICSEARCH_HOST}:9200
+
+  logstash:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/logstash/logstash:${STACK_VERSION}
+    restart: always
+    volumes:
+      - ./logstash/config/:/usr/share/logstash/config
+      - ./logstash/driver/:/usr/share/logstash/driver
+    environment:
+      - xpack.monitoring.enabled=false
+      - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}

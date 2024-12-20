@@ -1,0 +1,20 @@
+# Xms and Xmx define the heap size. Make sure both are set to the same value
+-Xms1g
+-Xmx1g
+
+# Enable G1GC for better performance with large heaps
+-XX:+UseG1GC
+-XX:G1HeapRegionSize=16m
+-XX:MaxGCPauseMillis=200
+-XX:InitiatingHeapOccupancyPercent=35
+
+# Enable heap dump on out of memory error
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/var/log/logstash/heapdump.hprof
+
+# Set JVM logging level to 'info'
+-Dlog.level=info
+
+# Set file encoding and time zone
+-Dfile.encoding=UTF-8
+-Duser.timezone=UTC

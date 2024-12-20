@@ -1,0 +1,2 @@
+- pipeline.id: sync-products
+  path.config: '/usr/share/logstash/config/sync-products.conf'

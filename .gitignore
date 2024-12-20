@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Personal File ###
+todo.txt
+
+### Elastic Search Bind Mount ###
+/data/es/*
+!/data/es/.gitkeep
