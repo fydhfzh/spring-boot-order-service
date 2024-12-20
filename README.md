@@ -1,4 +1,7 @@
 # Spring Boot RESTful API + ELK Stack
+![download](https://github.com/user-attachments/assets/dd4514f2-f5f4-4334-8fea-65918ca631d7)
+![download](https://github.com/user-attachments/assets/4b20f157-b3e1-483b-b0c0-bdfd3806f567)
+
 
 ## Intro
 
