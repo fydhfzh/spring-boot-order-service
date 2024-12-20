@@ -8,19 +8,16 @@ with simple `users` -> `orders` -> `product` schema. For the authentication, JWT
 
 ## Schemas
 
-All the schemas are put in the `sql-scripts` directory
+All the schemas are placed in the `sql-scripts` directory
 
-## Maven build
+## Maven run
 
 ```
 mvn spring-boot:run
 ```
 
-## Docker build (for ELK stack)
+## Docker run (for ELK stack)
 
 ```
-docker-compose build
-docker-compose up
+docker-compose up -d
 ```
-
-##
